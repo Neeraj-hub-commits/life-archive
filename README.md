@@ -1,27 +1,27 @@
-# The Life Archive — v3 (GitHub Pages PWA)
+# LifeMaxing v1.0
 
-## Publish
-1. Create a GitHub repository named `life-archive`.
-2. For free GitHub Pages, set it to Public. The app source will be public; never upload personal journal exports or private notes.
-3. Extract this ZIP and upload the CONTENTS of this folder to the repository root (index.html, manifest.webmanifest, sw.js, icons/).
-4. Commit to the `main` branch.
-5. Open repository Settings → Pages.
-6. Under Build and deployment choose Deploy from a branch, select `main` and `/(root)`, then Save.
-7. Wait for the Pages URL, usually `https://YOUR-USERNAME.github.io/life-archive/`.
+A mobile-first, installable personal life archive. The archive starts on **26 November 2026**.
 
-## Install on Android
-Open the published HTTPS URL in Chrome → three-dot menu → Install app / Add to Home screen → confirm.
+## Included
+- Passcode gate and AES-GCM encrypted local archive (PBKDF2 key derivation)
+- Automatic local saving after actions and manual save buttons
+- Daily mood, energy, sleep, one-line summary, good/hard moments, gratitude and free journal
+- Searchable memory timeline and standalone memory capture
+- Custom habits with categories and frequency targets
+- Fitness sessions (running, strength, walking, mobility, etc.)
+- Study sessions with active-recall notes
+- Mood/habit insights, weekly reflections and monthly letters
+- Encrypted export/import backup
+- PWA manifest and offline shell caching
 
-## Features
-- Dashboard with daily habit completion, weekly consistency and 7-day mood snapshot
-- 18 starter habits, categories and custom habits
-- Weekly targets (daily, 5×, 3×, 2× or 1× per week)
-- Daily journal with mood, energy, good thing, notes and tomorrow's priority
-- December calendar, monthly charts, reflection and backup export/import
-- Offline app shell through a service worker
+## Publish on GitHub Pages
+Upload `index.html`, `manifest.webmanifest`, `sw.js`, `icon-192.png`, and `icon-512.png` to the repository root. In Settings → Pages choose Deploy from a branch → `main` → `/(root)` → Save. Open the Pages URL, then use the browser menu → Add to Home Screen / Install.
+
+## Storage and recovery
+The app stores one encrypted data envelope in this browser's localStorage. The passcode is not stored. Export an encrypted JSON backup regularly and keep it somewhere separate (Google Drive is suitable). To restore, import the backup and enter the same passcode. Clearing browser data or losing the device without a backup can permanently remove the local archive. If the passcode is forgotten, the encrypted archive cannot be unlocked.
+
+## Google sign-in / cloud sync
+Not active in this build. A real Google sign-in and automatic cloud backup requires a Firebase project, enabled Google provider, Firestore rules, and project configuration. Do not treat local storage as cloud backup. This is deliberately disclosed rather than showing a fake connected status.
 
 ## Privacy
-Journal entries are stored locally in the browser on the device. They are not uploaded to GitHub or any server. Export backups regularly. Clearing browser/site data can erase entries. This version does not sync between devices.
-
-## Note
-The app is configured for December 2026. GitHub Pages hosts the files; it does not require a GitHub integration or API token.
+The archive is encrypted before it is written to localStorage. The browser's cached app shell is not encrypted, but it contains no journal entries. Use a strong passcode and protect access to the device. This is a personal-use app, not a security-audited vault.
